@@ -8,8 +8,8 @@ node('master') {
         }
 
         stage('Build and Publish'){
-            bat 'C:\\Tools\\nuget.exe restore RQMServices.sln'
-            bat "\"${tool 'MSBuild - 15.0'}\" RQMServices.sln /p:DeployOnBuild=true /p:PublishProfile=CustomProfile.pubxml"
+            bat 'C:\\Tools\\nuget.exe restore TestProject.sln'
+            bat "\"${tool 'MSBuild - 15.0'}\" TestProject.sln /p:DeployOnBuild=true /p:PublishProfile=CustomProfile.pubxml"
         }
         /*
         stage('Backend Test'){
@@ -35,16 +35,16 @@ node('master') {
         //}
         
 
-        mail body: 'project build successful', 
-                        subject: 'pipeline test email: successful', 
-                        to: 'cxu@acr.org'
+        // mail body: 'project build successful', 
+        //                 subject: 'pipeline test email: successful', 
+        //                 to: 'cxu@acr.org'
 
     }
     catch(error){
 
-        mail body: "project build error is here: ${env.BUILD_URL}", 
-                        subject: 'pipeline test email: fail', 
-                        to: 'cxu@acr.org'
+        // mail body: "project build error is here: ${env.BUILD_URL}", 
+        //                 subject: 'pipeline test email: fail', 
+        //                 to: 'cxu@acr.org'
 
         throw error
     }
