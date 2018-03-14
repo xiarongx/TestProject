@@ -14,9 +14,9 @@ node('master') {
             // bat 'C:\\Tools\\nuget.exe restore TestProject.sln'
             // bat "\"${tool 'MSBuild - 15.0'}\" TestProject.sln /p:DeployOnBuild=true /p:PublishProfile=CustomProfile.pubxml"
         }
-        stage('build') {
+        stage('build and deploy') {
 
-            bat 'dotnet build'
+            bat 'dotnet build /p:DeployOnBuild=true /p:PublishProfile=CustomProfile.pubxml'
 
         }
         /*
