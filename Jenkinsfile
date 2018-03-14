@@ -8,16 +8,16 @@ node('master') {
         }
 
         stage('restore'){
-            steps {
-                bat 'dotnet restore'
-            }
+
+            bat 'dotnet restore'
+
             // bat 'C:\\Tools\\nuget.exe restore TestProject.sln'
             // bat "\"${tool 'MSBuild - 15.0'}\" TestProject.sln /p:DeployOnBuild=true /p:PublishProfile=CustomProfile.pubxml"
         }
         stage('build') {
-            steps {
-                bat 'dotnet build'
-            }
+
+            bat 'dotnet build'
+
         }
         /*
         stage('Backend Test'){
